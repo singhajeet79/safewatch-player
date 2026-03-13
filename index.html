@@ -3,39 +3,38 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-  * { margin:0; padding:0; background:#000; }
-  html, body { width:100vw; height:100vh; overflow:hidden; }
-  #player { width:100%; height:100%; }
-  #player iframe { width:100% !important; height:100% !important; }
+* { margin:0; padding:0; background:#000; }
+html, body { width:100vw; height:100vh; overflow:hidden; }
+#player { width:100%; height:100%; }
+#player iframe { width:100% !important; height:100% !important; }
 </style>
 </head>
 <body>
 <div id="player"></div>
 <script>
-  var videoId = new URLSearchParams(window.location.search).get("v") || "";
-  var tag = document.createElement("script");
-  tag.src = "https://www.youtube.com/iframe_api";
-  document.head.appendChild(tag);
-
-  function onYouTubeIframeAPIReady() {
-    new YT.Player("player", {
-      videoId: videoId,
-      width: "100%",
-      height: "100%",
-      playerVars: {
-        autoplay: 1,
-        controls: 1,
-        modestbranding: 1,
-        rel: 0,
-        fs: 0,
-        iv_load_policy: 3,
-        playsinline: 1
-      },
-      events: {
-        onReady: function(e) { e.target.playVideo(); }
-      }
-    });
-  }
+var videoId = new URLSearchParams(window.location.search).get("v") || "";
+var tag = document.createElement("script");
+tag.src = "https://www.youtube.com/iframe_api";
+document.head.appendChild(tag);
+function onYouTubeIframeAPIReady() {
+  new YT.Player("player", {
+    videoId: videoId,
+    width: "100%",
+    height: "100%",
+    playerVars: {
+      autoplay: 1,
+      controls: 1,
+      modestbranding: 1,
+      rel: 0,
+      fs: 0,
+      iv_load_policy: 3,
+      playsinline: 1
+    },
+    events: {
+      onReady: function(e) { e.target.playVideo(); }
+    }
+  });
+}
 </script>
 </body>
 </html>
